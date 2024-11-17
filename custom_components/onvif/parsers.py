@@ -43,7 +43,7 @@ async def async_parse_motion_alarm(uid: str, msg) -> Event | None:
             "binary_sensor",
             "motion",
             None,
-            msg.Message._value_1.Data.SimpleItem[0].Value == "true",
+            msg.Message._value_1.Data.SimpleItem[0].Value != "true",
         )
     except (AttributeError, KeyError):
         return None
@@ -232,7 +232,7 @@ async def async_parse_cell_motion_detector(uid: str, msg) -> Event | None:
             "binary_sensor",
             "motion",
             None,
-            msg.Message._value_1.Data.SimpleItem[0].Value == "true",
+            msg.Message._value_1.Data.SimpleItem[0].Value != "true",
         )
     except (AttributeError, KeyError):
         return None
@@ -294,7 +294,7 @@ async def async_parse_tamper_detector(uid: str, msg) -> Event | None:
             "binary_sensor",
             "problem",
             None,
-            msg.Message._value_1.Data.SimpleItem[0].Value == "true",
+            msg.Message._value_1.Data.SimpleItem[0].Value != "true",
             EntityCategory.DIAGNOSTIC,
         )
     except (AttributeError, KeyError):
